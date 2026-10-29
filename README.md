@@ -2,7 +2,7 @@
 
 > Real-time floating subtitles for Windows. Captures your microphone **or whatever your PC is playing**, shows a single translucent line at the bottom of the screen, and exports everything (text + screenshots) to Markdown.
 
-自带 Python、CUDA 运行库、ffmpeg 和模型，**不需要你装任何东西**。装完约 5.5 GB，全程离线可用。
+自带 Python、CUDA 运行库、ffmpeg 和模型，**不需要你装任何东西**。装完约 5.5 GB，全程离外可用。
 
 开源地址：JHSwordsman/WhisperBa: **Windows 上的实时悬浮字幕条** —— 说话或放视频，屏幕底部浮出一条半透明字幕，一键存成 Markdown。
 
@@ -10,11 +10,11 @@
 
 123网盘：[https://1626683.share.123pan.cn/123pan/ekeA-JIYw](https://1626683.share.123pan.cn/123pan/ekeA-JIYw)
 
-![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第4张图片](https://www.go176.net/content/uploadfile/202610/bee51793272187.png "WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第4张图片")
+![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第4张图片](shots/20261028_193231.png)
 
-![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第5张图片](https://www.go176.net/content/uploadfile/202610/184f1793272188.webp "WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第5张图片")
+![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第5张图片](shots/20261028_193240.png)
 
-![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第6张图片](https://www.go176.net/content/uploadfile/202610/9cc01793272187.webp "WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第6张图片")
+![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第6张图片](shots/20261028_193300.png)
 
 ---
 

@@ -1,0 +1,22 @@
+# ---- 实时转写服务 ----
+whisperlivekit==0.2.26
+faster-whisper==1.2.1
+ctranslate2==4.8.4
+
+# PyAV 必须 < 19：19 移除了 metadata_errors 参数，faster-whisper 解码音频会直接崩
+av==18.1.0
+
+# ---- NVIDIA 运行库（免装 CUDA Toolkit / cuDNN）----
+# 没有 N 卡也能装，只是用不上
+nvidia-cublas-cu12==12.9.2.10
+nvidia-cudnn-cu12==9.27.0.42
+
+# ---- 悬浮窗 / 音频采集 / OCR ----
+pillow==13.0.0
+SoundCard==0.4.6
+websockets==17.3
+winocr==0.0.15
+numpy==2.5.4
+
+# ---- ffmpeg 二进制（装完由 bootstrap 复制到 bin/）----
+imageio-ffmpeg==0.6.0

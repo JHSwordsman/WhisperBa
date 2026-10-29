@@ -1,13 +1,20 @@
-# WhisperBar · 浮声
-
 **Windows 上的实时悬浮字幕条** —— 说话或放视频，屏幕底部浮出一条半透明字幕，一键存成 Markdown。
 
 > Real-time floating subtitles for Windows. Captures your microphone **or whatever your PC is playing**, shows a single translucent line at the bottom of the screen, and exports everything (text + screenshots) to Markdown.
 
 自带 Python、CUDA 运行库、ffmpeg 和模型，**不需要你装任何东西**。装完约 5.5 GB，全程离线可用。
 
-<!-- 建议在这里放截图：悬浮条折叠态 + 展开面板各一张 -->
-<!-- ![screenshot](docs/screenshot.png) -->
+开源地址：JHSwordsman/WhisperBa: **Windows 上的实时悬浮字幕条** —— 说话或放视频，屏幕底部浮出一条半透明字幕，一键存成 Markdown。
+
+## 下载地址
+
+123网盘：[https://1626683.share.123pan.cn/123pan/ekeA-JIYw](https://1626683.share.123pan.cn/123pan/ekeA-JIYw)
+
+![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第4张图片](https://www.go176.net/content/uploadfile/202610/bee51793272187.png "WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第4张图片")
+
+![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第5张图片](https://www.go176.net/content/uploadfile/202610/184f1793272188.webp "WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第5张图片")
+
+![WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第6张图片](https://www.go176.net/content/uploadfile/202610/9cc01793272187.webp "WhisperBar · 浮声 将语音转为MD笔记可实时配上截图-剑客网-第6张图片")
 
 ---
 
@@ -17,13 +24,13 @@
 
 现有方案要么只能录麦克风（浏览器里的网页版），要么得自己装 Python、配 CUDA、下模型。这个项目把整条链路打成一个双击就能用的 Windows 包：
 
-| 你想要的 | 这里的做法 |
+|你想要的|这里的做法|
 |---|---|
-| 不挡视线 | 默认折叠成**一条 52px 半透明字幕**浮在屏幕底部，鼠标不碰它就是纯文字 |
-| 录电脑里的声音 | Windows **WASAPI 环回**，不用装 VB-Cable 虚拟声卡，也不占麦克风 |
-| 顺便截图做笔记 | 框选画面 → 图片存档 → **和当前这段字幕绑在一起** |
-| 整理成笔记 | 一键导出 Markdown，图片自动进 `attachments/`，**整个文件夹丢进 Obsidian 就能用** |
-| 不想看碎片字幕 | 流式结果自动聚合成整句（遇标点 / 满 5 秒 / 停顿 1.2 秒才断行） |
+|不挡视线|默认折叠成**一条 52px 半透明字幕**浮在屏幕底部，鼠标不碰它就是纯文字|
+|录电脑里的声音|Windows **WASAPI 环回**，不用装 VB-Cable 虚拟声卡，也不占麦克风|
+|顺便截图做笔记|框选画面 → 图片存档 → **和当前这段字幕绑在一起**|
+|整理成笔记|一键导出 Markdown，图片自动进 `attachments/`，**整个文件夹丢进 Obsidian 就能用**|
+|不想看碎片字幕|流式结果自动聚合成整句（遇标点 / 满 5 秒 / 停顿 1.2 秒才断行）|
 
 ---
 
@@ -42,20 +49,23 @@
 
 **要求**：Windows 10/11 x64，8 GB 内存，约 6 GB 磁盘。NVIDIA 显卡可选（有就快很多）。
 
-### 方式一：下载打包版（推荐）
+### 方式一：下载 ZIP（推荐，约 11 MB）
 
-1. 下载 `WhisperBar.7z`，解压到任意目录（路径别太深，别放中文特殊符号多的目录）
+1. 右上角 **Code → Download ZIP**，解压到任意目录
 2. 双击 **`WhisperBar.exe`**
+3. 首次会弹出安装向导，点「开始安装」—— 它自己下载 Python、依赖和模型（约 5 GB，10~30 分钟）
+4. 装完自动启动，以后每次双击就直接用
 
-就这样。exe 会自动检查环境、拉起转写服务、弹出悬浮字幕条。
+> 仓库里只有源码和启动器（11 MB），运行时和模型由安装向导现场拉取。  
+> 国内源已配好：Python 走华为云、PyPI 走华为云、模型走 hf-mirror，不用梯子。
 
-> 完整包（约 5.5 GB）已经把 Python、CUDA 库、模型都塞好了，双击即用。
-> 如果拿到的是**精简包**（没有 `runtime/` 和 `models/`），首次双击会弹出安装向导，
-> 点「开始安装」它自己下（10~30 分钟），装完自动启动。
+### 方式二：完整离线包（约 5.5 GB）
 
-### 方式二：从源码安装
+到 Releases 下载完整包（分卷压缩），解压后双击 `WhisperBar.exe` 即可，**不需要联网装任何东西**。
 
-仓库里不含运行时和模型（加起来 5.5 GB，放不进 Git），用安装脚本拉：
+适合：网络不好、要拷到内网机器、或者给不折腾的人用。
+
+### 方式三：从源码安装
 
 ```bat
 git clone https://github.com/<your-name>/whisperbar.git
@@ -97,11 +107,11 @@ install.bat
 
 ### 三个能力
 
-| 能力 | 操作 |
+|能力|操作|
 |---|---|
-| 麦克风 | 点「系统声音」切成「麦克风」，点 `▶开始` |
-| 电脑播放的声音 | 默认就是这个，点 `▶开始` 即可 |
-| 截图存档 | 点「截图」，屏幕变暗后拖拽框选，松手即存 |
+|麦克风|点「系统声音」切成「麦克风」，点 `▶开始`|
+|电脑播放的声音|默认就是这个，点 `▶开始` 即可|
+|截图存档|点「截图」，屏幕变暗后拖拽框选，松手即存|
 
 ### 分句规则
 
@@ -138,12 +148,12 @@ output/
 
 ## 其他入口
 
-| 文件 | 用途 |
+|文件|用途|
 |---|---|
-| `float.bat` | 悬浮字幕条（推荐） |
-| `start.bat` | 命令行 + 网页 UI（`http://127.0.0.1:8000`） |
-| `capture.bat` | 命令行版系统声音内录，带电平条 |
-| `check.bat` | 环境自检（CUDA / 模型 / 实机推理计时） |
+|`float.bat`|悬浮字幕条（推荐）|
+|`start.bat`|命令行 + 网页 UI（`http://127.0.0.1:8000`）|
+|`capture.bat`|命令行版系统声音内录，带电平条|
+|`check.bat`|环境自检（CUDA / 模型 / 实机推理计时）|
 
 命令行内录也支持参数：
 
@@ -190,45 +200,45 @@ runtime\python\python.exe tools\capture_system_audio.py --list
 
 RTX 5070 Laptop 8G / 驱动 610.47 / `large-v3-turbo`：
 
-| 项目 | 结果 |
+|项目|结果|
 |---|---|
-| CTranslate2 识别到 CUDA 设备 | 1 个，支持 float16 |
-| 模型加载（GPU） | 0.8 s |
-| 3 秒音频推理（GPU float16） | 0.36 s |
-| 3 秒音频推理（CPU int8） | 1.13 s |
-| 10 秒音频 REST 转写（含 ffmpeg 解码） | 1.7 s |
-| 冷启动到可录音 | 20~40 s（模型加载） |
+|CTranslate2 识别到 CUDA 设备|1 个，支持 float16|
+|模型加载（GPU）|0.8 s|
+|3 秒音频推理（GPU float16）|0.36 s|
+|3 秒音频推理（CPU int8）|1.13 s|
+|10 秒音频 REST 转写（含 ffmpeg 解码）|1.7 s|
+|冷启动到可录音|20~40 s（模型加载）|
 
 ---
 
 ## 常见问题
 
-**Q：双击 `float.bat` 没反应 / 一闪而过**
+**Q：双击 `float.bat` 没反应 / 一闪而过**  
 先跑 `install.bat`。已经装过的话双击 `check.bat` 看自检输出，日志在 `logs/`。
 
-**Q：字幕条一直显示「正在启动转写服务…」**
+**Q：字幕条一直显示「正在启动转写服务…」**  
 模型加载要 20~40 秒。超过 2 分钟还没好，看 `logs/server.log`。
 
-**Q：没有字幕 / 电平条不动**
-说明没抓到声音。`runtime\python\python.exe tools\capture_system_audio.py --list` 看设备，
+**Q：没有字幕 / 电平条不动**  
+说明没抓到声音。`runtime\python\python.exe tools\capture_system_audio.py --list` 看设备，  
 确认声音是从哪个设备出来的。蓝牙耳机切过去后要重开一次。
 
-**Q：GPU 没吃上**
-`check.bat` 里找 `[OK] cuda/float16`。如果是 `[x]`，多半是驱动太旧或不是 N 卡。
+**Q：GPU 没吃上**  
+`check.bat` 里找 `[OK] cuda/float16`。如果是 `[x]`，多半是驱动太旧或不是 N 卡。  
 AMD / Intel 显卡在 Windows 上 CTranslate2 没有对应后端，只能走 CPU。
 
-**Q：想换小一点的模型**
-改 `float_app.py` 里 `_launch_server()` 的 `model_dir`，或 `start.bat` 里的 `MODEL`。
+**Q：想换小一点的模型**  
+改 `float_app.py` 里 `_launch_server()` 的 `model_dir`，或 `start.bat` 里的 `MODEL`。  
 可选：`faster-whisper-small`（0.5G，已内置）/ `medium`（1.5G）/ `large-v3`（3.1G）。
 
 ```bat
 runtime\python\python.exe tools\download_model.py Systran/faster-whisper-large-v3 faster-whisper-large-v3
 ```
 
-**Q：端口 8000 被占用**
+**Q：端口 8000 被占用**  
 改 `start.bat` / `float_app.py` 里的端口。悬浮窗默认连 8000。
 
-**Q：为什么仓库里没有 runtime 和 models？**
+**Q：为什么仓库里没有 runtime 和 models？**  
 加起来 5.5 GB，超出 GitHub 限制。用 `install.bat` 拉，或者下 Release 里的打包版。
 
 ---
@@ -271,12 +281,12 @@ whisperbar/
 
 ## 致谢
 
-- [WhisperLiveKit](https://github.com/QuentinFuxa/WhisperLiveKit) —— 流式转写服务端
-- [faster-whisper](https://github.com/SYSTRAN/faster-whisper) / [CTranslate2](https://github.com/OpenNMT/CTranslate2) —— 推理引擎
-- [SoundCard](https://github.com/bastibe/SoundCard) —— WASAPI 环回采集
-- [winocr](https://github.com/b-nova/winocr) —— Windows 自带 OCR
-- [OpenAI Whisper](https://github.com/openai/whisper) —— 模型
+- WhisperLiveKit —— 流式转写服务端
+- faster-whisper / CTranslate2 —— 推理引擎
+- SoundCard —— WASAPI 环回采集
+- winocr —— Windows 自带 OCR
+- OpenAI Whisper —— 模型
 
 ## License
 
-[MIT](LICENSE)。第三方组件许可见 LICENSE 末尾。
+MIT。第三方组件许可见 LICENSE 末尾。
